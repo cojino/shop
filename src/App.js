@@ -11,6 +11,7 @@ function App() {
       name: "rese",
       type: "cotton T-shirt",
       price: 55.45,
+      Quantity: 0,
     },
     {
       id: 2,
@@ -18,13 +19,15 @@ function App() {
       name: "denji",
       type: "cotton T-shirt",
       price: 75.36,
+      Quantity: 0,
     },
     {
       id: 3,
-      img: "./img/Japan-Manga-Ayanami-Rei-Image-Tshirt-Anime-Chainsaw-Man-T-Shirt-Summer-Vintage-T-shirt-Men-1.jpg",
+      img: "./img/power.jpg",
       name: "power",
       type: "cotton T-shirt",
       price: 97.99,
+      Quantity: 0,
     },
     {
       id: 4,
@@ -32,6 +35,7 @@ function App() {
       name: "makima",
       type: "cotton T-shirt",
       price: 47.89,
+      Quantity: parseInt(0),
     },
   ]);
   return (
@@ -42,7 +46,7 @@ function App() {
           <input type="search" placeholder="Filter by title" id="" />
         </div>
         <hr />
-        <ShirtList itemList={itemList} />
+        <ShirtList setitemList={setitemList} itemList={itemList} />
         <div className="back">
           <button>
             <i className="fas fa-long-arrow-alt-left" />

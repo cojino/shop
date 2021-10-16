@@ -4,8 +4,15 @@ import Shirt from "./Shirt";
 const ShirtList = ({ itemList }) => {
   return (
     <div>
-      {itemList.map((c) => (
-        <Shirt c={c} id={c.id} key={c.id} />
+      {itemList.map((itemList) => (
+        <Shirt
+          Quantity={parseInt(itemList.Quantity)}
+          id={itemList.id}
+          key={itemList.id}
+          img={itemList.img}
+          price={itemList.price}
+          name={itemList.name}
+        />
       ))}
     </div>
   );
