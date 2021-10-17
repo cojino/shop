@@ -1,24 +1,38 @@
 import React, { useState } from "react";
 import "./Shirt.css";
 
-const Shirt = ({ c }) => {
-  const [count, setCount] = useState(c.Quantity);
+const Shirt = ({ s }) => {
+  const [count, setCount] = useState(s.Quantity);
+  const [price, setPrice] = useState(s.price);
+  const [moneyCount, setMoneyCount] = useState(price);
+
   const plusHandler = () => {
     setCount(count + 1);
+    //i had problem with money count so i fixed it with multiplying it in first click
+    const fixDelay = count === 2 ? price + moneyCount : price + moneyCount;
+
+    setMoneyCount(fixDelay);
+    console.log(moneyCount);
   };
-  const gg = count > 1 ? count - 1 : count;
+  // i did this so it never go below 0
+  const min = count >= 1 ? count - 1 : count;
+  //this for min product
   const minHandler = () => {
-    setCount(gg);
+    setCount(min);
+    const moneyMinCheck = moneyCount >= price ? moneyCount - price : moneyCount;
+    setMoneyCount(moneyMinCheck);
+    console.log(moneyCount);
   };
+
   return (
     <div>
       <div>
         <div className="cloth01">
           <div>
-            <img src={c.img} alt="hi" />
+            <img src={s.img} alt="hi" />
           </div>
           <div className="nameProdect">
-            <p>{c.name}</p>
+            <p>{s.name}</p>
             <p>cotton T-shirt</p>
           </div>
           <div>
@@ -28,7 +42,7 @@ const Shirt = ({ c }) => {
             <button onClick={plusHandler}>+</button>
           </div>
           <div>
-            <p>BTC {c.price}</p>
+            <p>BTC {moneyCount}</p>
           </div>
           <div>
             <button className="ex">

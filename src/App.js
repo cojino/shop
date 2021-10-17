@@ -10,7 +10,7 @@ function App() {
       img: "./img/rese.jpeg",
       name: "rese",
       type: "cotton T-shirt",
-      price: 55.45,
+      price: 55,
       Quantity: 1,
     },
     {
@@ -18,7 +18,7 @@ function App() {
       img: "./img/denji.jpg",
       name: "denji",
       type: "cotton T-shirt",
-      price: 75.36,
+      price: 75,
       Quantity: 1,
     },
     {
@@ -26,7 +26,7 @@ function App() {
       img: "./img/power.jpg",
       name: "power",
       type: "cotton T-shirt",
-      price: 97.99,
+      price: 97,
       Quantity: 1,
     },
     {
@@ -34,20 +34,11 @@ function App() {
       img: "./img/makima.jpeg",
       name: "makima",
       type: "cotton T-shirt",
-      price: 47.89,
+      price: 47,
       Quantity: 1,
     },
   ]);
-  const addQuantity = (shirt) => {
-    itemList.map((item) =>
-      item.id === shirt.id ? (item.Quantity = item.Quantity + 1) : item.Quantity
-    );
-  };
-  const minQuantity = (shirt) => {
-    itemList.map((item) =>
-      item.id === shirt.id ? (item.Quantity = item.Quantity - 1) : item.Quantity
-    );
-  };
+
   return (
     <div className="App container">
       <div className="left-side">
@@ -56,12 +47,7 @@ function App() {
           <input type="search" placeholder="Filter by title" id="" />
         </div>
         <hr />
-        <ShirtList
-          addQuantity={addQuantity}
-          minQuantity={minQuantity}
-          setitemList={setitemList}
-          itemList={itemList}
-        />
+        <ShirtList setitemList={setitemList} itemList={itemList} />
         <div className="back">
           <button>
             <i className="fas fa-long-arrow-alt-left" />
