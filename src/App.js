@@ -11,7 +11,7 @@ function App() {
       name: "rese",
       type: "cotton T-shirt",
       price: 55.45,
-      Quantity: 0,
+      Quantity: 1,
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ function App() {
       name: "denji",
       type: "cotton T-shirt",
       price: 75.36,
-      Quantity: 0,
+      Quantity: 1,
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ function App() {
       name: "power",
       type: "cotton T-shirt",
       price: 97.99,
-      Quantity: 0,
+      Quantity: 1,
     },
     {
       id: 4,
@@ -35,9 +35,19 @@ function App() {
       name: "makima",
       type: "cotton T-shirt",
       price: 47.89,
-      Quantity: parseInt(0),
+      Quantity: 1,
     },
   ]);
+  const addQuantity = (shirt) => {
+    itemList.map((item) =>
+      item.id === shirt.id ? (item.Quantity = item.Quantity + 1) : item.Quantity
+    );
+  };
+  const minQuantity = (shirt) => {
+    itemList.map((item) =>
+      item.id === shirt.id ? (item.Quantity = item.Quantity - 1) : item.Quantity
+    );
+  };
   return (
     <div className="App container">
       <div className="left-side">
@@ -46,7 +56,12 @@ function App() {
           <input type="search" placeholder="Filter by title" id="" />
         </div>
         <hr />
-        <ShirtList setitemList={setitemList} itemList={itemList} />
+        <ShirtList
+          addQuantity={addQuantity}
+          minQuantity={minQuantity}
+          setitemList={setitemList}
+          itemList={itemList}
+        />
         <div className="back">
           <button>
             <i className="fas fa-long-arrow-alt-left" />

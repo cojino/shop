@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Shirt.css";
 
-const Shirt = ({ name, Quantity, price, img }) => {
+const Shirt = ({ c }) => {
+  const [count, setCount] = useState(c.Quantity);
+  const plusHandler = () => {
+    setCount(count + 1);
+  };
+  const gg = count > 1 ? count - 1 : count;
+  const minHandler = () => {
+    setCount(gg);
+  };
   return (
     <div>
       <div>
         <div className="cloth01">
           <div>
-            <img src={img} alt="hi" />
+            <img src={c.img} alt="hi" />
           </div>
           <div className="nameProdect">
-            <p>{name}</p>
+            <p>{c.name}</p>
             <p>cotton T-shirt</p>
           </div>
           <div>
-            <button>-</button>
-            {parseInt(Quantity)}
-            <button onClick={() => console.log(Quantity.typeof)}>+</button>
+            <button onClick={minHandler}>-</button>
+
+            {count}
+            <button onClick={plusHandler}>+</button>
           </div>
           <div>
-            <p>BTC {price}</p>
+            <p>BTC {c.price}</p>
           </div>
           <div>
             <button className="ex">
