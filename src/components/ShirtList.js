@@ -5,7 +5,13 @@ const ShirtList = ({ itemList, calculateTotal }) => {
   return (
     <div>
       {itemList.map((s) => (
-        <Shirt calculateTotal={calculateTotal} s={s} id={s.id} key={s.id} />
+        <Shirt
+          calculateTotal={calculateTotal}
+          s={s}
+          id={s.id}
+          key={s.id}
+          Items={itemList}
+        />
       ))}
     </div>
   );
