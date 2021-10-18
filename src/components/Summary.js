@@ -1,13 +1,14 @@
 import React from "react";
 import "./Summary.css";
-const Summary = () => {
+const Summary = ({ itemList, total }) => {
+  console.log(total);
   return (
     <div>
       <h2>Summary</h2>
       <hr />
       <div className="first-part">
-        <h3>ITEMS 4</h3>
-        <h3>254.00 BTC</h3>
+        <h3>ITEMS {itemList.length}</h3>
+        <h3> {total} BTC</h3>
       </div>
       <div className="second-part mid">
         <h3>SHIPPING</h3>

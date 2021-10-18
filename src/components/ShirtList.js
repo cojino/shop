@@ -1,11 +1,11 @@
 import React from "react";
 import Shirt from "./Shirt";
 
-const ShirtList = ({ itemList }) => {
+const ShirtList = ({ itemList, calculateTotal }) => {
   return (
     <div>
       {itemList.map((s) => (
-        <Shirt s={s} id={s.id} key={s.id} />
+        <Shirt calculateTotal={calculateTotal} s={s} id={s.id} key={s.id} />
       ))}
     </div>
   );

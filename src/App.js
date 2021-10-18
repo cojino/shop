@@ -39,15 +39,40 @@ function App() {
     },
   ]);
 
+  const calculateTotal = () => {
+    const totalItemCount = itemList.reduce((total, item) => {
+      return total + item.price;
+    }, 0);
+    setTotal(totalItemCount);
+    console.log(totalItemCount);
+  };
+
+  const [total, setTotal] = useState(274);
+  //const [backTotal, setBackTotal] = useState(initialState);
+  const [search, setSearch] = useState("");
+
+  const filter = (event) => {
+    setSearch(event.target.value);
+  };
+
   return (
     <div className="App container">
       <div className="left-side">
         <div className="header">
           <h2>Shopping Cart</h2>
-          <input type="search" placeholder="Filter by title" id="" />
+          <input
+            onChange={filter}
+            type="search"
+            placeholder="Filter by title"
+            id=""
+          />
         </div>
         <hr />
-        <ShirtList setitemList={setitemList} itemList={itemList} />
+        <ShirtList
+          calculateTotal={calculateTotal}
+          setitemList={setitemList}
+          itemList={itemList}
+        />
         <div className="back">
           <button>
             <i className="fas fa-long-arrow-alt-left" />
@@ -56,7 +81,7 @@ function App() {
         </div>
       </div>
       <div className="right-side">
-        <Summary />
+        <Summary total={total} setitemList={setitemList} itemList={itemList} />
       </div>
     </div>
   );

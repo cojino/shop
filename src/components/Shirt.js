@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Shirt.css";
 
-const Shirt = ({ s }) => {
+const Shirt = ({ s, calculateTotal }) => {
   const [count, setCount] = useState(s.Quantity);
   const [price, setPrice] = useState(s.price);
   const [moneyCount, setMoneyCount] = useState(price);
@@ -13,6 +13,7 @@ const Shirt = ({ s }) => {
 
     setMoneyCount(fixDelay);
     console.log(moneyCount);
+    calculateTotal();
   };
   // i did this so it never go below 0
   const min = count >= 1 ? count - 1 : count;
@@ -22,6 +23,7 @@ const Shirt = ({ s }) => {
     const moneyMinCheck = moneyCount >= price ? moneyCount - price : moneyCount;
     setMoneyCount(moneyMinCheck);
     console.log(moneyCount);
+    calculateTotal();
   };
 
   return (
